@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% include "_navbar.html" %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center h-75 flex-column">
+    <h1>Contato enviado.</h1>
+    <p>Entrarei em contato assim que possível.</p>
+    <a class="btn btn-primary btn-sm" href="{{ url_for('main.home') }}">Voltar</a>
+</div>
+{% endblock %}

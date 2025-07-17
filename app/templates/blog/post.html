@@ -1,0 +1,79 @@
+{% extends 'blog/blog-base.html' %} 
+
+{% block blog_header_title %}Artigo{% endblock %}
+
+{% block blog_content %}
+<article class="container p-sm-5">
+  <div>
+    <div class="mb-5">
+      <p class="my-5">
+        <a
+          class="text-decoration-none text-secondary"
+          href="{{ url_for('blog.blog') }}"
+          >Blog <i class="bi bi-chevron-right"></i>
+        </a>
+        <span class="fw-bold">{{ post.title }}</span>
+      </p>
+      <h2 class="display-6 fw-bold mb-3">{{ post.title }}</h2>
+      <!-- H3 -->
+      <p class="text-body-secondary mb-3 fs-4 w-75">{{ post.subtitle }}</p>
+      <div class="d-flex flex-column gap-1 mb-2">
+        <p class="text-body-tertiary m-0">Posted by {{ post.name }}</p>
+        <div>
+          <i class="bi bi-calendar3 me-2"></i>
+          <span class="text-body-tertiary m-0">{{ moment(post.date).format('LLL') }}</span>
+        </div>
+      </div>
+      {% if post.update_date %}
+      <small class="text-body-tertiary"
+        >Updated on {{ post.update_date }}</small
+      >
+      {% endif %}
+      <img
+        src="{{ post.img_url }}"
+        alt="image post"
+        class="rounded-5 w-100 mt-5 shadow-sm"
+        style="height: 40vh; object-fit: cover"
+      />
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        {{ post.body|safe }}
+      </div>
+      <div class="col-lg-3" style="position: sticky;align-self: start;top: 50px;">
+        <div class="mb-5 ms-lg-3">
+          <h2 class="fs-5 fw-bold mb-4">Lastest Posts</h2>
+          {% for post in posts %}
+            <div class="d-flex gap-3 mb-4">
+              <img  class="rounded-3" src="{{ post.img_url }}" alt="" style="object-fit: cover; width: 4.5rem; height: 4.5rem;">
+              <div>
+                <!-- H3 -->
+                <p class="fw-bold m-0"><a class="text-decoration-none post-link" href="{{ url_for('blog.show_post', post_id=post.id) }}">{{ post.title }}</a></p>
+                <p class="text-body-tertiary m-0">{{ post.date }}</p>
+              </div>
+            </div>
+          {% endfor %} 
+        </div>
+
+        <div class="ms-lg-3">
+          <div class="d-flex">
+            <i class="bi bi-tags me-2"></i> 
+            <h2 class="fs-6 fw-bold mb-3">Tags</h2>
+          </div>
+          {% for tag in post.tags %}
+              <a class="text-decoration-none badge rounded-pill bg-secondary-subtle me-3 mb-3" href="{{ url_for('blog.get_posts_tag', tag_name=tag.name) }}">{{ tag.name }}</a>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {% if current_user.id == 1: %}
+  <hr />
+  <a class="btn btn-primary" href="{{ url_for('blog.edit_post', post_id=post.id) }}"
+    >Edit Post</a
+  >
+  {% endif %}
+</article>
+{% endblock %}

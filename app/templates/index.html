@@ -1,0 +1,429 @@
+{% extends 'base.html' %} 
+
+{% block styles %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='assets/css/scrollCue.css') }}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='assets/css/glightbox.min.css') }}"
+/>
+{% endblock %} 
+
+{% block title %} Meu Portfolio {% endblock %} 
+
+
+{%block content %}
+
+{% include '_navbar.html' %} {% import "bootstrap_wtf.html" as wtf %}
+<!-- hero -->
+<section id="hero">
+  <div class="bg-primary right-slant-shape">
+    <div
+      class="text-center mb-5 text-white"
+      data-cues="zoomOut"
+      data-group="images"
+    >
+      <span class="fs-5">Olá, meu nome é</span>
+      <h1 class="display-1 fw-semibold">Alan Cavalcante</h1>
+      <div id="typed-strings">
+        <p>&lt;Sou um Desenvolvedor Web Fullstack/&gt;</p>
+        <p>&lt;Desenvolvo sites e sistemas./&gt;</p>
+      </div>
+      <p class="fw-bold fs-4"><span id="typed"></span></p>
+    </div>
+
+    <div
+      class="z-1"
+      style="position: absolute; bottom: -4rem"
+      data-cues="zoomIn"
+    >
+      <img
+        src="../static/assets/imgs/profile-home.png"
+        width="200"
+        height="200"
+        alt=""
+        class="rounded-circle border border-5 border-white z-1"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- projetos -->
+<section id="portfolio">
+  <div class="container">
+    <div class="row" data-cues="zoomIn">
+      <div class="text-center">
+        <span class="text-secondary fw-bold ls">PORTFOLIO</span>
+        <h2 class="mt-4">
+          Alguns projetados
+          <span class="border-bottom border-5 border-primary">realizados</span>
+        </h2>
+      </div>
+    </div>
+
+    <div
+      class="row justify-content-center gy-5 my-5 portfolio"
+      data-cues="fadeIn"
+      data-interval="-300"
+      data-group="portfolio"
+    >
+      <div class="col-12 col-sm-6 col-md-5 col-lg-4">
+        <div class="card p-4 rounded-4 shadow">
+          <div class="rounded-4" style="overflow: hidden">
+            <a
+              href="../static/assets/imgs/advogado-website.png"
+              class="glightbox"
+            >
+              <img
+                src="../static/assets/imgs/advogado-website.png"
+                class="card-img-top rounded-4"
+                alt="app image"
+                style="transition: all 0.3s ease; object-fit: cover"
+                loading="lazy"
+                height="300"
+              />
+            </a>
+          </div>
+          <div
+            class="card-body p-0 d-flex align-items-center justify-content-between"
+          >
+            <div>
+              <h3 class="card-title mt-3 text-start fw-bold fs-4">
+                Projeto de site de advocacia
+              </h3>
+            </div>
+            <div>
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-display fs-2 me-2"></i>
+              </a>
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-github fs-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <span class="badge text-bg-primary">HTML & CSS</span>
+            <span class="badge text-bg-primary">Bootstrap 5</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-5 col-lg-4">
+        <div class="card p-4 rounded-4 shadow">
+          <div class="rounded-4" style="overflow: hidden">
+            <a
+              href="../static/assets/imgs/portfolio-website.png"
+              class="glightbox"
+            >
+              <img
+                src="../static/assets/imgs/portfolio-website.png"
+                class="card-img-top rounded-4"
+                alt="app image"
+                style="transition: all 0.3s ease; object-fit: cover"
+                loading="lazy"
+                height="300"
+              />
+            </a>
+          </div>
+          <div
+            class="card-body p-0 d-flex align-items-center justify-content-between"
+          >
+            <div>
+              <h3 class="card-title mt-3 text-start fw-bold fs-4">
+                Projeto pessoal de portfolio
+              </h3>
+            </div>
+            <div>
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-display fs-2 me-2"></i>
+              </a>
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-github fs-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <span class="badge text-bg-primary">Flask</span>
+            <span class="badge text-bg-primary">Bootstrap 5</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-5 col-lg-4">
+        <div class="card p-4 rounded-4 shadow">
+          <div class="rounded-4" style="overflow: hidden">
+            <a
+              href="../static/assets/imgs/odontologia-website.png"
+              class="glightbox"
+            >
+              <img
+                src="../static/assets/imgs/odontologia-website.png"
+                class="card-img-top rounded-4"
+                alt="app image"
+                style="transition: all 0.3s ease; object-fit: cover"
+                loading="lazy"
+                height="300"
+              />
+            </a>
+          </div>
+          <div
+            class="card-body p-0 d-flex align-items-center justify-content-between"
+          >
+            <div>
+              <h3 class="card-title mt-3 text-start fw-bold fs-4">
+                Projeto de site para clínica odontológica
+              </h3>
+            </div>
+            <div>
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-display fs-2 me-2"></i>
+              </a>
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-github fs-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <span class="badge text-bg-primary">HTML & CSS</span>
+            <span class="badge text-bg-primary">Bootstrap 5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- skills -->
+<section id="skills">
+  <div class="container">
+    <div class="row align-items-center">
+      <div
+        class="col-12 col-lg-5 text-center text-lg-start mb-md-5 mb-5 mb-lg-0"
+        data-cue="slideInLeft"
+      >
+        <span class="text-secondary fw-bold ls">HABILIDADES</span>
+        <h2 class="mt-4">
+          Principais
+          <span class="border-bottom border-5 border-primary"
+            >conhecimentos</span
+          >
+        </h2>
+      </div>
+
+      <div class="container col-12 col-lg-7">
+        <div class="row justify-content-end offset-md-d1">
+          <!-- skills cards -->
+          <div class="container">
+            <div class="row gy-5 justify-content-center">
+              <div
+                class="col-10 col-md-6 mt-lg-2"
+                data-cues="fadeIn"
+                data-group="skills"
+                data-sort="random"
+                data-delay="150"
+              >
+                <div
+                  class="card p-3 border-0 mb-5"
+                  style="background-color: rgba(var(--bs-danger-rgb), 0.15)"
+                >
+                  <div class="card-header">
+                    <h3>HTML & CSS</h3>
+                  </div>
+                  <div class="card-body text-center mt-5">
+                    <img
+                      width="100"
+                      src="{{ url_for('static', filename='assets/imgs/HTML5.svg') }}"
+                      alt="html5 icon"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="card p-3 border-0"
+                  style="background-color: rgba(var(--bs-info-rgb), 0.15)"
+                >
+                  <div class="card-header">
+                    <h3>React</h3>
+                  </div>
+                  <div class="card-body text-center mt-5">
+                    <img
+                      width="100"
+                      src="{{ url_for('static', filename='assets/imgs/React.svg') }}"
+                      alt="react icon"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-10 col-md-6"
+                data-cues="fadeIn"
+                data-group="skills"
+                data-sort="random"
+                data-delay="150"
+              >
+                <div
+                  class="card p-3 border-0 mb-5"
+                  style="background-color: rgba(var(--bs-warning-rgb), 0.15)"
+                >
+                  <div class="card-header">
+                    <h3>Python</h3>
+                  </div>
+                  <div class="card-body text-center mt-5">
+                    <img
+                      width="100"
+                      src="{{ url_for('static', filename='assets/imgs/Python.svg') }}"
+                      alt="python icon"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="card p-3 border-0"
+                  style="background-color: rgba(var(--bs-success-rgb), 0.15)"
+                >
+                  <div class="card-header">
+                    <h3>Flask</h3>
+                  </div>
+                  <div class="card-body text-center mt-5">
+                    <img
+                      width="100"
+                      src="{{ url_for('static', filename='assets/imgs/Flask.svg') }}"
+                      alt="flask icon"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- sobre -->
+<section id="sobre">
+  <div class="container">
+    <div class="row" data-cues="zoomIn">
+      <div class="text-center">
+        <span class="text-secondary fw-bold ls">SOBRE MIM</span>
+        <h2 class="mt-4 mb-5">
+          Olá, me chamo
+          <span class="border-bottom border-5 border-primary">Alan.</span>
+        </h2>
+        <p class="col-12 col-lg-8 mx-auto text-secondary fw-medium">
+          Sou uma pessoa apaixonada por tecnologia. Faço atualmente faculdade de
+          Análise e desenvolvimento de sistemas, estou no último período. Gosto
+          muito de desenvolver para Web, possuo conhecimento nas ferramentas
+          mais atuais para desenolvimento.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- contato -->
+<section id="contato">
+  <div class="container">
+    <div class="row justify-content-center" data-cues="bounceIn">
+      <div
+        class="col-11 col-sm-6 col-lg-4 offset-lg-2 bg-body-tertiary p-4 p-sm-5 rounded-4 border shadow-sm mb-5"
+      >
+        <h2 class="fs-4 fw-bold mb-4">
+          Interessado em colocar seu projeto em realidade? Entre em contato
+          abaixo.
+        </h2>
+        {{ wtf.quick_form(form) }}
+      </div>
+      <div
+        class="col-12 col-sm-5 offset-sm-1 col-lg-4 offset-lg-2 text-center text-sm-start"
+      >
+        <div class="mb-4">
+          <h2 class="fs-4 fw-bold m-0">Alan Cavalcante</h2>
+          <small class="text-secondary fw-medium">Desenvolvedor Web</small>
+        </div>
+
+        <h3 class="fs-6">Redes sociais</h3>
+        <a href="https://www.linkedin.com/in/alan--cavalcante/" target="_blank"
+          ><i class="bi bi-linkedin me-3" style="font-size: 2rem"></i
+        ></a>
+        <a href="https://www.instagram.com/alancorrea__/" target="_blank"
+          ><i class="bi bi-instagram me-3" style="font-size: 2rem"></i
+        ></a>
+        <a href="https://github.com/alan589" target="_blank"
+          ><i class="bi bi-github me-3" style="font-size: 2rem"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<section id="footer">
+  <div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="#hero" class="nav-link px-2 text-body-secondary">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contato" class="nav-link px-2 text-body-secondary"
+            >Contato</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#portfolio" class="nav-link px-2 text-body-secondary"
+            >Projetos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#sobre" class="nav-link px-2 text-body-secondary">Sobre</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">© 2025 Alan Cavalcante</p>
+    </footer>
+  </div>
+</section>
+
+{% endblock %} 
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='assets/js/scrollCue.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/typed.umd.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/glightbox.min.js') }}"></script>
+
+<script>
+  var typed = new Typed("#typed", {
+    stringsElement: "#typed-strings",
+    typeSpeed: 50,
+    backSpeed: 5,
+    backDelay: 3000,
+    loop: true,
+  });
+
+  scrollCue.init();
+
+  const glightbox = GLightbox({
+    selector: ".glightbox",
+    slideEffect: "fade",
+    width: "900px",
+    height: "700px",
+    loop: "true",
+  });
+</script>
+{% endblock %}

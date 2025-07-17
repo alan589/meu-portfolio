@@ -1,0 +1,5 @@
+Novo Contato
+
+Nome: {{ form.name.data }}
+Email: {{ form.email.data }}
+Mensagem: {{ form.about_project.data }}

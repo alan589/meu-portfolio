@@ -1,0 +1,102 @@
+{% extends 'blog/blog-base.html' %} 
+
+{% block title %}Meu Blog{% endblock %} 
+
+{% block blog_content %}
+<div class="container p-5">
+  <div class="row justify-content-center gap-5 mt-5">
+    <div class="border-bottom">
+      <h2 class="display-5 text-center">{{ title | capitalize }}</h2>
+    </div>
+    {% for post in all_posts %}
+    <div class="card border-0 p-0" style="width: 25rem">
+      <img
+        src="{{ post.img_url }}"
+        class="card-img-top rounded-4 mb-4 shadow-sm"
+        alt="image card"
+      />
+      <div class="d-flex flex-column align-items-start gap-3">
+        <div>
+          {% for tag in post.tags %}
+          <a
+            href="{{ url_for('blog.get_posts_tag', tag_name=tag.name) }}"
+            class="badge rounded-pill bg-body-secondary text-body-emphasis text-decoration-none"
+            >{{ tag.name | capitalize }}</a
+          >
+          {% endfor %}
+        </div>
+        <h5 class="card-title fw-bold">
+          <a
+            href="{{ url_for('blog.show_post', post_id=post.id) }}"
+            class="text-decoration-none post-link"
+          >
+            {{ post.title }}
+          </a>
+        </h5>
+        <h6 class="card-subtitle text-secondary">
+          {% set list_words = post.subtitle.split()[:13] %} {% set subtitle = "
+          ".join(list_words) + "..." %} {{ subtitle }}
+        </h6>
+      </div>
+
+      <div class="d-flex gap-2 mt-3 align-items-center">
+        <i class="bi bi-calendar3"></i>
+        <small class="card-text text-body-tertiary me-3">{{ moment(post.date).format('L') }}</small>
+        {% if current_user.id == 1: %}
+        <a href="{{ url_for('blog.delete_post', post_id=post.id) }}"
+          ><i class="bi bi-trash-fill text-danger"></i
+        ></a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  {% if current_user.id == 1: %}
+  <hr />
+
+  <a class="btn btn-primary" href="{{ url_for('blog.create_post') }}">Create Post</a>
+  {% endif %}
+
+  <nav aria-label="Search results pages">
+    <ul class="pagination justify-content-center mt-5">
+      {% if prev_url %}
+      <li class="page-item">
+        <a class="page-link" href="{{ prev_url }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="{{ prev_url }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {% endif %}
+
+      {% for index in range(1, total_pages + 1) %}
+        {% if current_page == index %}
+          <li class="page-item active"><a class="page-link" href="{{ url_for('blog.blog', page=index) }}">{{ index }}</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{{ url_for('blog.blog', page=index) }}">{{ index }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {% if next_url %}
+      <li class="page-item">
+        <a class="page-link" href="{{ next_url }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="{{ prev_url }}" aria-label="Previous">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+</div>
+{% endblock %}

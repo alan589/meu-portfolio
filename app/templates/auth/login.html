@@ -1,0 +1,62 @@
+{% extends 'base.html' %} 
+{% block title %}Login{% endblock %} 
+
+{% block content%}
+{% include '_navbar.html' %}
+<div class="container">
+  <div
+    class="row justify-content-center align-items-center"
+    style="height: 65vh"
+  >
+    <div class="user-form">
+      <h1 class="mb-4 fw-normal">Please sign in</h1>
+      {% with message = get_flashed_messages()[0] %} 
+        {% if message %}
+            <p class="text-danger">{{ message }}</p>
+        {% endif %} 
+      {% endwith %}
+
+      <form
+        action="{{ url_for('auth.login') }}"
+        method="POST"
+        class="needs-validation"
+        novalidate
+      >
+        {% from 'bootstrap5/form.html' import render_field %} 
+        {{ form.csrf_token() }}
+
+        <input name="next-page" type="hidden" value="{{ request.args.get('next', '') }}"/>
+
+        <div class="input-group mb-3 has-validation">
+          <span class="input-group-text"
+            ><i class="bi bi-envelope-at"></i
+          ></span>
+          {{ form.email(class="form-control", placeholder="Email") }}
+          <div class="invalid-feedback">
+            Please choose an email.
+          </div>
+        </div>
+
+        <div class="input-group mb-3 has-validation">
+          <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          {{ form.password(class="form-control", placeholder="Password") }}
+          <div class="invalid-feedback">
+            Please choose a password.
+          </div>
+        </div>
+
+        {{ render_field(form.submit) }}
+      </form>
+      <div class="mt-4">
+        <a href="{{ url_for('auth.register') }}">Register a new account</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='assets/js/form-validation.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block title %}Register{% endblock %} 
+
+{% block content %}
+{% include '_navbar.html' %}
+<div class="container">
+  <div
+    class="row justify-content-center align-items-center"
+    style="height: 65vh"
+  >
+    <div class="user-form">
+      <h1 class="mb-4 fw-normal">Create an Account</h1>
+
+      {% with message = get_flashed_messages()[0] %}
+        <p class="text-danger">
+            {{ message }}
+            {% if 'already signed up' in message: %}
+                <a href="{{ url_for('auth.login') }}" class="link-danger">login instead.</a>
+            {% endif %}
+        </p>
+
+      {% endwith %}
+      
+      <form
+        action="{{ url_for('auth.register') }}"
+        method="POST"
+        class="needs-validation"
+        novalidate
+      >
+        {% from 'bootstrap5/form.html' import render_field %}
+        {{ form.csrf_token() }}
+
+        <div class="input-group has-validation mb-3">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          {{ form.username(class="form-control", placeholder="Username") }}
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+
+        
+        <div class="input-group has-validation mb-3">
+          <span class="input-group-text"
+            ><i class="bi bi-envelope-at"></i
+          ></span>
+          {{ form.email(class="form-control", placeholder="Email") }}
+          <div class="invalid-feedback">Invalid email.</div>
+        </div>
+
+        <div class="input-group has-validation mb-3">
+          <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          {{ form.password(class="form-control", placeholder="Password") }}
+          <div class="invalid-feedback">
+            Password must be at least 6 characters long.
+          </div>
+        </div>
+
+        {{ render_field(form.submit) }}
+      </form>
+
+      <div class="mt-4">
+        Already have an account?
+        <a href="{{ url_for('auth.login') }}">Sign In</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='assets/js/form-validation.js') }}"></script>
+{% endblock %}

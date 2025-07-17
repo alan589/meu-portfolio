@@ -1,0 +1,20 @@
+{% extends 'blog-base.html' %}
+
+{% block title %}Criar Post{% endblock %} 
+{% block blog_header_title %}{{ title }}{% endblock %}
+{% block blog_content %}
+
+<div class="container p-5">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <!-- TODO:-Add CKEditor and render the form here -->
+        {% from 'bootstrap5/form.html' import render_form %}
+        {{ render_form(form, novalidate=True) }}   
+        
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='body', custom_config="height: '600'") }}
+      </div>
+    </div>
+</div>
+
+{% endblock %}
