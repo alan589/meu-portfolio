@@ -30,7 +30,7 @@ def register():
             db.session.add(user)
             db.session.commit()
             login_user(user)
-            return redirect(url_for('blog'))
+            return redirect(url_for('blog.blog'))
         else:
             flash("You've already signed up with that email,")
             return redirect(url_for('auth.register'))
@@ -58,7 +58,7 @@ def login():
                 # flash(Markup('<i class="bi bi-check-circle-fill fs-1"></i> Logged in successfully.'), 'success')
                 next_page = request.form.get('next-page')
                 if not next_page or urlsplit(next_page).netloc != '':
-                    next_page = url_for('blog')
+                    next_page = url_for('blog.blog')
                 return redirect(next_page)
             else:
                 flash('Password incorrect, please try again.')

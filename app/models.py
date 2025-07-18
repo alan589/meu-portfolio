@@ -57,7 +57,7 @@ class User(db.Model, UserMixin):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     email: so.Mapped[str] = so.mapped_column(
         sa.String(100), unique=True, index=True)
-    password_hash: so.Mapped[str] = so.mapped_column(sa.String(50))
+    password_hash: so.Mapped[str] = so.mapped_column(sa.String(256))
     username: so.Mapped[str] = so.mapped_column(sa.String(50))
 
     posts: so.Mapped[List[Post]] = so.relationship(
