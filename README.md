@@ -1,43 +1,42 @@
-## How to run this project
+# How to run this project
 
-Clone this repository:
+### Clone this repository:
 
 ```
 git clone https://github.com/alan589/meu-portfolio.git
 ```
 
-Create python venv:
+### Create python venv:
 
-
-```
 On Windows:
+```
 py -m venv .venv
 ```
 
-```
 On Linux:
+```
 python3 -m venv .venv
 ```
 
-Activate venv:
+### Activate venv:
 
-```
 On Windows:
+```
 .venv\Scripts\activate
 ```
 
-```
 On Linux:
+```
 source .venv\bin\activate
 ```
 
-Install python packages:
+### Install python packages:
 
 ```
 pip install -r requirements.txt
 ```
 
-Start working:
+### Start working:
 
 ```
 flask run
