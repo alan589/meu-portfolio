@@ -26,7 +26,7 @@ def register():
                 email=email,
             )
             user.set_password(password)
-            print(user)
+            # print(user)
             db.session.add(user)
             db.session.commit()
             login_user(user)
@@ -47,7 +47,7 @@ def login():
 
         query = sa.select(User).where(User.email == email)
         user = db.session.scalar(query)
-        print(user)
+        # print(user)
         if not user:
             flash('Email does not exist, please try again.')
             return redirect(url_for('auth.login'))

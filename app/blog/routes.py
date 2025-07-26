@@ -34,7 +34,7 @@ def blog():
         if posts.has_prev else None
 
     total_pages = math.ceil(posts.total / current_app.config['POSTS_PER_PAGE'])
-    print(posts.last, posts.first, posts.items, page)
+    # print(posts.last, posts.first, posts.items, page)
 
     return render_template("blog/blog.html", title='All Articles', all_posts=posts.items,
                            next_url=next_url, prev_url=prev_url, total_pages=total_pages, current_page=page)
@@ -153,6 +153,6 @@ def show_post(post_id):
     requested_post = db.get_or_404(Post, post_id)
     posts = Post.query.order_by(Post.id.desc()).limit(3).all()
 
-    print(posts)
+    # print(posts)
     return render_template("blog/post.html", post=requested_post, posts=posts)
 

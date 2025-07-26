@@ -8,13 +8,27 @@ git clone https://github.com/alan589/meu-portfolio.git
 
 Create python venv:
 
+
 ```
+On Windows:
 py -m venv .venv
 ```
 
-Activate venv
 ```
+On Linux:
+python3 -m venv .venv
+```
+
+Activate venv:
+
+```
+On Windows:
 .venv\Scripts\activate
+```
+
+```
+On Linux:
+source .venv\bin\activate
 ```
 
 Install python packages:
@@ -26,5 +40,5 @@ pip install -r requirements.txt
 Start working:
 
 ```
-py -m flask run
+flask run
 ```
