@@ -10,11 +10,13 @@ git clone https://github.com/alan589/meu-portfolio.git
 
 On Windows:
 ```
+cd meu-portfolio
 py -m venv .venv
 ```
 
 On Linux:
 ```
+cd meu-portfolio
 python3 -m venv .venv
 ```
 
@@ -27,7 +29,7 @@ On Windows:
 
 On Linux:
 ```
-source .venv\bin\activate
+source .venv/bin/activate
 ```
 
 ### Install python packages:
