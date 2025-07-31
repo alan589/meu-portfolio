@@ -1,10 +1,11 @@
-Projeto criado com:
+## Projeto criado com:
 
 - Flask
 - Bootstrap
 - Javascript
 
-# Como iniciar o projeto
+## Como iniciar o projeto
+
 ### Clone o repositório:
 
 ```
