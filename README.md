@@ -1,44 +1,49 @@
-# How to run this project
+Projeto criado com:
 
-### Clone this repository:
+- Flask
+- Bootstrap
+- Javascript
+
+# Como iniciar o projeto
+### Clone o repositório:
 
 ```
 git clone https://github.com/alan589/meu-portfolio.git
 ```
 
-### Create python venv:
+### Crie python venv:
 
-On Windows:
+Windows:
 ```
 cd meu-portfolio
 py -m venv .venv
 ```
 
-On Linux:
+Linux:
 ```
 cd meu-portfolio
 python3 -m venv .venv
 ```
 
-### Activate venv:
+### Ative venv:
 
-On Windows:
+Windows:
 ```
 .venv\Scripts\activate
 ```
 
-On Linux:
+Linux:
 ```
 source .venv/bin/activate
 ```
 
-### Install python packages:
+### Instale pacotes python:
 
 ```
 pip install -r requirements.txt
 ```
 
-### Start working:
+### Inicie:
 
 ```
 flask run
