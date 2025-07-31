@@ -32,9 +32,6 @@ def create_app(config_class=Config):
 
     bts.init_app(app)
     ckeditor.init_app(app)
-
-
-
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
